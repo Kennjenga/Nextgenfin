@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="#" target="_blank">
-      <img src="https://i.postimg.cc/placeholder/nextgen-finances-banner.jpg" alt="NextGen Finances Banner">
+      <img src="/dashboard.png" alt="NextGen Finances Banner">
     </a>
   
   <br />
@@ -100,7 +100,7 @@ NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
 
 DATABASE_URL=your_database_connection_string
 
-NEXT_PUBLIC_OPENAI_API_KEY=your_openai_api_key
+NEXT_PUBLIC_GEMINI_API_KEY=your_openai_api_key
 ```
 
 Replace the placeholder values with your actual credentials.
