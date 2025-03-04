@@ -1,7 +1,7 @@
 <div align="center">
   <br />
     <a href="#" target="_blank">
-      <img src="/dashboard.png" alt="NextGen Finances Banner">
+      <img src="./public/dashboard.png" alt="NextGen Finances Banner">
     </a>
   
   <br />
