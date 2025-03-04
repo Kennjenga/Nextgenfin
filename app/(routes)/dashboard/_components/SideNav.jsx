@@ -64,13 +64,8 @@ function SideNav() {
   }, [path]);
   return (
     <div className="h-screen p-5 border shadow-sm">
-      {/* <Image src={'/logo.svg'}
-        alt='logo'
-        width={160}
-        height={100}
-        /> */}
       <div className="flex flex-row items-center">
-        <Image src={""} alt="logo" width={40} height={25} />
+        <Image src={"./logo.svg"} alt="logo" width={40} height={25} />
         <span className="text-red-800 font-bold text-xl">Nextgen</span>
       </div>
       <div className="mt-5">
@@ -81,7 +76,7 @@ function SideNav() {
                     text-gray-500 font-medium
                     mb-2
                     p-4 cursor-pointer rounded-full
-                    hover:text-primary hover:bg-blue-100
+                    hover:text-primary hover:bg-red-100
                     ${path == menu.path && "text-primary bg-blue-100"}
                     `}
             >
