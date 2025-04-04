@@ -1,7 +1,7 @@
 <div align="center">
   <br />
-    <a href="https://youtu.be/dGHFV_RMGag" target="_blank">
-      <img src="https://i.postimg.cc/tJsYLQcP/test1.jpg" alt="Project Banner">
+    <a href="#" target="_blank">
+      <img src="./public/dashboard.png" alt="NextGen Finances Banner">
     </a>
   
   <br />
@@ -12,52 +12,51 @@
     <img src="https://img.shields.io/badge/-Tailwind_CSS-black?style=for-the-badge&logoColor=white&logo=tailwindcss&color=06B6D4" alt="tailwindcss" />
   </div>
 
-  <h3 align="center">Finan Smart</h3>
+  <h3 align="center">NextGen Finances</h3>
 
    <div align="center">
-     Build this project step by step with our detailed tutorial on <a href="https://www.youtube.com/@albertmends" target="_blank"><b>Your YouTube Channel</b></a>. Join the community!
+     AI-Powered Financial Management Platform for the Young Generation
     </div>
 </div>
 
-## 📋 <a name="table">Table of Contents</a>
+## 📋 Table of Contents
 
-1. 🤖 [Introduction](#introduction)
+1. 🚀 [Introduction](#introduction)
 2. ⚙️ [Tech Stack](#tech-stack)
 3. 🔋 [Features](#features)
 4. 🤸 [Quick Start](#quick-start)
-5. 🕸️ [Assets & Code](#snippets)
-6. 🚀 [More](#more)
+5. 🔑 [Key Components](#key-components)
+6. 🌐 [Deployment](#deployment)
+7. 📈 [Future Roadmap](#roadmap)
 
-## 🚨 Tutorial
+## <a name="introduction">🚀 Introduction</a>
 
-This repository contains the code corresponding to an in-depth tutorial available on our YouTube channel, <a href="https://www.youtube.com/@albertmends/videos" target="_blank"><b>Code with Albert</b></a>.
+NextGen Finances is an AI-driven financial system designed specifically for managing finances, making informed decisions, and improving financial literacy for the younger generation. Our mission is to empower users with an intuitive platform that addresses the common challenges young people face with budgeting, saving, and investing.
 
-If you prefer visual learning, this is the perfect resource for you. Follow our tutorial to learn how to build projects like these step-by-step in a beginner-friendly manner!
-
-## <a name="introduction">🤖 Introduction</a>
-
-Built with the latest Next.js and TypeScript, Finan Smart is an advanced AI financial advice tool. It allows users to input their income, expenses, and budgets, and receive personalized financial advice based on their financial data. This project is perfect for those looking to learn how to integrate AI-driven insights and financial management into a Next.js application.
-
-If you're getting started and need assistance or face any bugs, join our active Discord community. It's a place where people help each other out.
-
-<a href="https://discord.com/channels/1221368900579754074/1221368901162631243" target="_blank"><img src="https://github.com/sujatagunale/EasyRead/assets/151519281/618f4872-1e10-42da-8213-1d69e486d02e"  /></a>
+Many young adults struggle with traditional finance tools that are outdated or difficult to use. NextGen Finances solves this by providing a modern, user-friendly interface powered by cutting-edge AI technology to help users achieve long-term financial wellbeing.
 
 ## <a name="tech-stack">⚙️ Tech Stack</a>
 
-- Next.js
-- TypeScript
-- OpenAI API
-- Tailwind CSS
+- **Frontend**: Next.js, React, TypeScript
+- **Styling**: Tailwind CSS, Framer Motion
+- **AI Integration**: OpenAI API for personalized financial insights
+- **Authentication**: Clerk
+- **Database**: Prisma with PostgreSQL
+- **Deployment**: Vercel
 
 ## <a name="features">🔋 Features</a>
 
-👉 **Income and Expense Input**: Allows users to input their income and expenses.
+👉 **Smart Budgeting**: AI-driven insights help create and maintain personalized budgets that adapt to spending patterns.
 
-👉 **Budget Management**: Enables users to manage their budgets effectively.
+👉 **Financial Literacy Hub**: Learn as you go with tailored financial education resources customized to your knowledge level and goals.
 
-👉 **Personalized Financial Advice**: Provides detailed financial advice based on user-specific financial data using OpenAI's GPT-4 model.
+👉 **Future Planning Tools**: Set financial goals and track progress with AI-powered recommendations and milestone tracking.
 
-👉 **Responsive Design**: Ensures a seamless experience across different devices.
+👉 **Expense Tracking**: Easily input and categorize expenses with automated classification and trend analysis.
+
+👉 **Investment Guidance**: Receive personalized investment recommendations based on risk tolerance and financial goals.
+
+👉 **Responsive Design**: Seamless experience across all devices with a modern, intuitive interface.
 
 ## <a name="quick-start">🤸 Quick Start</a>
 
@@ -68,14 +67,14 @@ Follow these steps to set up the project locally on your machine.
 Make sure you have the following installed on your machine:
 
 - [Git](https://git-scm.com/)
-- [Node.js](https://nodejs.org/en)
+- [Node.js](https://nodejs.org/en) (version 16 or higher)
 - [npm](https://www.npmjs.com/) (Node Package Manager)
 
 **Cloning the Repository**
 
 ```bash
-git clone https://github.com/mendsalbert/ai-finance-trackingt.git
-cd ai-finance-tracking
+git clone https://github.com/yourusername/nextgen-finances.git
+cd nextgen-finances
 ```
 
 **Installation**
@@ -88,23 +87,29 @@ npm install
 
 **Set Up Environment Variables**
 
-Create a new file named `.env` in the root of your project and add the following content:
+Create a new file named `.env.local` in the root of your project and add the following content:
 
 ```env
-NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=p
-CLERK_SECRET_KEY=
+NEXT_PUBLIC_CLERK_PUBLISHABLE_KEY=your_clerk_publishable_key
+CLERK_SECRET_KEY=your_clerk_secret_key
 
 NEXT_PUBLIC_CLERK_SIGN_IN_URL=/sign-in
 NEXT_PUBLIC_CLERK_SIGN_UP_URL=/sign-up
-NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/
-NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/
-NEXT_PUBLIC_OPENAI_API_KEY=
+NEXT_PUBLIC_CLERK_AFTER_SIGN_IN_URL=/dashboard
+NEXT_PUBLIC_CLERK_AFTER_SIGN_UP_URL=/onboarding
 
-NEXT_PUBLIC_DATABASE_URL=
+DATABASE_URL=your_database_connection_string
 
+NEXT_PUBLIC_GEMINI_API_KEY=your_openai_api_key
 ```
 
-Replace the placeholder values with your actual OpenAI credentials. You can obtain these credentials by signing up on the [OpenAI website](https://openai.com/).
+Replace the placeholder values with your actual credentials.
+
+**Setting Up the Database**
+
+```bash
+npx prisma migrate dev --name init
+```
 
 **Running the Project**
 
@@ -114,10 +119,34 @@ npm run dev
 
 Open [http://localhost:3000](http://localhost:3000) in your browser to view the project.
 
-## <a name="snippets">🕸️ Assets & Code</a>
+## <a name="key-components">🔑 Key Components</a>
 
-The repository includes all the assets and code you need to get started with Finan Smart. Follow along with our YouTube tutorial for a step-by-step guide.
+- **Hero Section**: Engaging introduction to NextGen Finances with clear value proposition
+- **Dashboard**: Comprehensive overview of user's financial status with AI insights
+- **Budget Manager**: Interactive tools for creating and managing budgets
+- **Learning Center**: Educational resources tailored to the user's knowledge level
+- **Goal Tracker**: Tools for setting and monitoring financial goals
+- **AI Advisor**: Personalized financial recommendations based on user data
 
-## <a name="more">🚀 More</a>
+## <a name="deployment">🌐 Deployment</a>
 
-For more information and additional resources, check out our YouTube channel and join our Discord community for support and discussions.
+The application is deployed on Vercel for optimal performance and reliability. Follow these steps to deploy your own instance:
+
+1. Create a Vercel account at [vercel.com](https://vercel.com)
+2. Install the Vercel CLI: `npm install -g vercel`
+3. Run `vercel` from the project root
+4. Follow the prompts to deploy your application
+
+## <a name="roadmap">📈 Future Roadmap</a>
+
+- **Mobile App**: Native mobile applications for iOS and Android
+- **Financial Community**: Social features to connect with peers on similar financial journeys
+- **Advanced Analytics**: More detailed financial analysis and forecasting
+- **Integration with Financial Institutions**: Direct connection with banks and investment platforms
+- **Gamification**: Achievement system to make financial management more engaging
+
+---
+
+<div align="center">
+  <h3>Join us in revolutionizing financial management for the younger generation!</h3>
+</div>
