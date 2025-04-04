@@ -21,9 +21,9 @@ const getFinancialAdvice = async (totalBudget, totalIncome, totalSpend) => {
 
     const userPrompt = `
       Based on the following financial data:
-      - Total Budget: ${totalBudget} USD 
-      - Expenses: ${totalSpend} USD 
-      - Incomes: ${totalIncome} USD
+      - Total Budget: ${totalBudget} KSH 
+      - Expenses: ${totalSpend} KSH
+      - Incomes: ${totalIncome} KSH
       Provide detailed financial advice in 2 sentences to help the user manage their finances more effectively.
     `;
 
@@ -57,7 +57,7 @@ function generateFallbackAdvice(totalBudget, totalIncome, totalSpend) {
 
   // Generate advice based on financial situation
   if (totalSpend > totalBudget) {
-    return `You've exceeded your budget by $${(
+    return `You've exceeded your budget by Ksh${(
       totalSpend - totalBudget
     ).toFixed(
       2
@@ -79,9 +79,9 @@ function generateFallbackAdvice(totalBudget, totalIncome, totalSpend) {
       0
     )}% of your income! Consider setting up automatic transfers to put some of these savings into an emergency fund and investments. If you don't have 3-6 months of expenses saved, prioritize building your emergency fund first.`;
   } else {
-    return `You have $${remainingBudget.toFixed(
+    return `You have Ksh${remainingBudget.toFixed(
       2
-    )} remaining in your budget and are saving $${savingsAmount.toFixed(
+    )} remaining in your budget and are saving Ksh${savingsAmount.toFixed(
       2
     )} this period. For continued financial health, try tracking your daily expenses and set specific goals for your savings like an emergency fund, debt reduction, or retirement.`;
   }

@@ -52,9 +52,9 @@ function SideNav() {
     // },
     {
       id: 4,
-      name: "Upgrade",
+      name: "taxes",
       icon: ShieldCheck,
-      path: "/dashboard/upgrade",
+      path: "/dashboard/taxes",
     },
   ];
   const path = usePathname();

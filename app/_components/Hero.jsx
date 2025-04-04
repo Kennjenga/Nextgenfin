@@ -256,7 +256,9 @@ function Hero() {
                     <p className="text-xs font-medium text-gray-900">
                       Monthly Savings
                     </p>
-                    <p className="text-sm font-bold text-blue-600">+$248.50</p>
+                    <p className="text-sm font-bold text-blue-600">
+                      +Ksh248.50
+                    </p>
                   </div>
                 </div>
               </div>
