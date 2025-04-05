@@ -7,6 +7,7 @@ import { Budgets } from "@/utils/schema";
 import { useUser } from "@clerk/nextjs";
 import { eq } from "drizzle-orm";
 import { useRouter } from "next/navigation";
+import FloatingChatbot from "@/components/FloatingChatbot";
 
 function DashboardLayout({ children }) {
   const { user } = useUser();
@@ -34,6 +35,7 @@ function DashboardLayout({ children }) {
         <DashboardHeader />
         {children}
       </div>
+      <FloatingChatbot />
     </div>
   );
 }

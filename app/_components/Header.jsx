@@ -13,7 +13,14 @@ function Header() {
         <span className="text-red-800  font-bold text-xl">Nextgen</span>
       </div>
       {isSignedIn ? (
-        <UserButton />
+        <div className="flex justify-between items-center gap-5">
+          <Link href={"/dashboard"}>
+            <Button variant="outline" className="rounded-full">
+              Dashboard
+            </Button>
+          </Link>
+          <UserButton />
+        </div>
       ) : (
         <div className="flex gap-3  items-center">
           <Link href={"/dashboard"}>

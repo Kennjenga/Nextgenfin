@@ -1,97 +1,136 @@
-import React, { useEffect } from "react";
-import Image from "next/image";
+import React from "react";
 import {
   LayoutGrid,
   PiggyBank,
   ReceiptText,
   ShieldCheck,
   CircleDollarSign,
-  TrendingUp,
-  TrendingDownIcon,
+  Settings,
+  LogOut,
 } from "lucide-react";
-import { UserButton } from "@clerk/nextjs";
-import { usePathname } from "next/navigation";
-import Link from "next/link";
-function SideNav() {
+import Image from "next/image";
+import { cn } from "@/lib/utils";
+import { useUser, useClerk } from "@clerk/nextjs"; // Import useClerk for logout
+
+function SideNav({ className }) {
+  const { user } = useUser(); // Fetch the user object from Clerk
+  const { signOut } = useClerk(); // Use Clerk's signOut method
+
   const menuList = [
     {
       id: 1,
       name: "Dashboard",
       icon: LayoutGrid,
       path: "/dashboard",
+      active: true,
     },
     {
       id: 2,
       name: "Incomes",
       icon: CircleDollarSign,
       path: "/dashboard/incomes",
-    },
-    {
-      id: 2,
-      name: "Budgets",
-      icon: PiggyBank,
-      path: "/dashboard/budgets",
+      active: false,
     },
     {
       id: 3,
+      name: "Budgets",
+      icon: PiggyBank,
+      path: "/dashboard/budgets",
+      active: false,
+    },
+    {
+      id: 4,
       name: "Expenses",
       icon: ReceiptText,
       path: "/dashboard/expenses",
+      active: false,
     },
-    // {
-    //   id: 2,
-    //   name: "Investments",
-    //   icon: TrendingUp,
-    //   path: "/dashboard/investments",
-    // },
-    // {
-    //   id: 2,
-    //   name: "Debts",
-    //   icon: TrendingDownIcon,
-    //   path: "/dashboard/debts",
-    // },
     {
-      id: 4,
-      name: "taxes",
+      id: 5,
+      name: "Taxes",
       icon: ShieldCheck,
       path: "/dashboard/taxes",
+      active: false,
     },
   ];
-  const path = usePathname();
 
-  useEffect(() => {
-    console.log(path);
-  }, [path]);
   return (
-    <div className="h-screen p-5 border shadow-sm">
-      <div className="flex flex-row items-center">
-        <Image src={"./logo.svg"} alt="logo" width={40} height={25} />
-        <span className="text-red-800 font-bold text-xl">Nextgen</span>
-      </div>
-      <div className="mt-5">
-        {menuList.map((menu, index) => (
-          <Link href={menu.path} key={index}>
-            <h2
-              className={`flex gap-2 items-center
-                    text-gray-500 font-medium
-                    mb-2
-                    p-4 cursor-pointer rounded-full
-                    hover:text-primary hover:bg-red-100
-                    ${path == menu.path && "text-primary bg-blue-100"}
-                    `}
+    <div
+      className={cn(
+        "h-screen border-r shadow-sm bg-white flex flex-col",
+        className
+      )}
+    >
+      <div className="p-5">
+        <div className="flex items-center gap-2">
+          <div className="h-10 w-10 bg-redAccent rounded-lg flex items-center justify-center">
+            <Image
+              src="/logo.svg"
+              alt="Logo"
+              className="h-8 w-8"
+              width={30}
+              height={30}
+            />
+          </div>
+          <span className="text-redAccent font-bold text-xl">Nextgen</span>
+        </div>
+
+        <div className="mt-8 flex flex-col gap-1">
+          {menuList.map((menu) => (
+            <a
+              key={menu.id}
+              href={menu.path}
+              className={cn(
+                "flex gap-3 items-center p-3 rounded-lg transition-colors",
+                menu.active
+                  ? "text-red bg-redLight font-medium"
+                  : "text-gray-500 hover:bg-gray-100"
+              )}
             >
-              <menu.icon />
-              {menu.name}
-            </h2>
-          </Link>
-        ))}
+              <menu.icon
+                size={20}
+                className={menu.active ? "text-redAccent" : "text-gray-500"}
+              />
+              <span>{menu.name}</span>
+            </a>
+          ))}
+        </div>
       </div>
-      <div
-        className="fixed bottom-10 p-5 flex gap-2
-            items-center"
-      >
-        <UserButton />
-        Profile
+
+      <div className="mt-auto p-5 border-t">
+        <div className="flex items-center gap-3 mb-4">
+          <div className="h-10 w-10 rounded-full bg-gray-200 flex items-center justify-center">
+            {/* User's first and last initials */}
+            <span className="text-gray-700 font-medium">
+              {user?.firstName?.[0]}
+              {user?.lastName?.[0]}
+            </span>
+          </div>
+          <div>
+            {/* User's name and email */}
+            <p className="font-medium text-sm">{user?.fullName || "User"}</p>
+            <p className="text-xs text-gray-500">
+              {user?.emailAddresses[0]?.emailAddress}
+            </p>
+          </div>
+        </div>
+
+        <div className="flex flex-col gap-1">
+          <a
+            href="#"
+            className="flex gap-3 items-center p-3 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+          >
+            <Settings size={20} />
+            <span>Settings</span>
+          </a>
+          <button
+            onClick={signOut} // Use Clerk's signOut method
+            className="flex gap-3 items-center p-3 rounded-lg text-gray-500 hover:bg-gray-100 transition-colors"
+          >
+            <LogOut size={20} />
+            <span>Logout</span>
+          </button>
+        </div>
       </div>
     </div>
   );
